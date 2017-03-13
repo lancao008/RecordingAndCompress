@@ -3,7 +3,19 @@
 Video Compressor based in the [**Telegram for Android**](https://github.com/DrKLO/Telegram) [![Telegram for Android](https://raw.githubusercontent.com/lalongooo/VideoCompressor/master/images/ic_launcher.png)](https://github.com/DrKLO/Telegram) app source code.
 
 #### Important:
+use     import dependency in gradle
 
+```
+dependencies {
+  compile 'ycjiang:videolibrary:1.0.4'
+}
+<dependency>
+  <groupId>ycjiang</groupId>
+  <artifactId>videolibrary</artifactId>
+  <version>1.0.4</version>
+  <type>pom</type>
+</dependency>
+```
  
   Add video recording and compression progress callback
  * This project is based on an older version of the Telegram for Android app. A version from one year ago.
