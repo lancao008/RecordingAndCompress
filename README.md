@@ -7,13 +7,14 @@ use     import dependency in gradle
 
 ```
 dependencies {
- compile 'ycjiang:VideoRecorderCompress:1.0.1'
+compile 'com.ycjiang:VideoRecorderCompress:1.0.3'
 }
  Maven
+ 
 <dependency>
-  <groupId>ycjiang</groupId>
+  <groupId>com.ycjiang</groupId>
   <artifactId>VideoRecorderCompress</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
   <type>pom</type>
 </dependency>
 ```
