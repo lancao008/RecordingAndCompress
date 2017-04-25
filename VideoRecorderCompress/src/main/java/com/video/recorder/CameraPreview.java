@@ -12,9 +12,10 @@ import java.util.List;
 
 
 /**
- * Created by yangchaojiang on 1/16/2017.
- * E-Mail:1007181167@qq.com
- * Description：相机预览视图
+ /**
+ * Created by yangc on 2017/4/24.
+ * E-Mail:yangchaojiang@outlook.com
+ * Deprecated:：相机预览视图
  */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 

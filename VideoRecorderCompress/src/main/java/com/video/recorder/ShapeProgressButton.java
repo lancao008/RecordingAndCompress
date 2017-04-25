@@ -17,12 +17,13 @@ import android.view.animation.LinearInterpolator;
 
 
 /**
- * Created by yangchaojiang on 1/16/2017.
- * E-Mail:1007181167@qq.com
- * Description:仿微信录小视频按钮
+ * Created by yangc on 2017/4/24.
+ * E-Mail:yangchaojiang@outlook.com
+ * Deprecated:仿微信录小视频按钮
  */
-public class ZoomProgressButton extends View {
+public class ShapeProgressButton extends View {
 
+    private  static  final  String TAG="ZoomProgressButton";
     //圆的半径
     private float mRadius;
     //中心圆半径
@@ -47,22 +48,22 @@ public class ZoomProgressButton extends View {
     private ProgressListener progressListener;
     public int mMaxMillSecond = 16000;//录制的最大时常，由于使用MediaRecorder录制会有提示音卡顿一下，所以进度多给1S
 
-    public ZoomProgressButton(Context context) {
+    public ShapeProgressButton(Context context) {
         this(context, null);
     }
 
-    public ZoomProgressButton(Context context, AttributeSet attrs) {
+    public ShapeProgressButton(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ZoomProgressButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ShapeProgressButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ZoomProgressButton, defStyleAttr, 0);
-        mStripeWidth = a.getDimension(R.styleable.ZoomProgressButton_stripeWidth, Screens.dpToPx(30, context));
-        mProgressColor = a.getColor(R.styleable.ZoomProgressButton_progressColor, 0xff2baefd);
-        mBackgroundColor = a.getColor(R.styleable.ZoomProgressButton_backgroundColor, 0xffffffff);
-        mCenterColor = a.getColor(R.styleable.ZoomProgressButton_centerColor, 0xffFF5557);
-        mRadius = a.getDimensionPixelSize(R.styleable.ZoomProgressButton_zpb_radius, Screens.dpToPx(100, context));
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShapeProgressButton, defStyleAttr, 0);
+        mStripeWidth = a.getDimension(R.styleable.ShapeProgressButton_stripeWidth, Screens.dpToPx(30, context));
+        mProgressColor = a.getColor(R.styleable.ShapeProgressButton_progressColor, 0xff2baefd);
+        mBackgroundColor = a.getColor(R.styleable.ShapeProgressButton_backgroundColor, 0xffffffff);
+        mCenterColor = a.getColor(R.styleable.ShapeProgressButton_centerColor, 0xffFF5557);
+        mRadius = a.getDimensionPixelSize(R.styleable.ShapeProgressButton_zpb_radius, Screens.dpToPx(100, context));
         mPaint = new Paint();
         a.recycle();
     }
@@ -285,6 +286,7 @@ public class ZoomProgressButton extends View {
         public void run() {
             try {
                 while (recording) {
+                    Log.i(TAG, "Runnable:" + videoTime);
                     videoTime += 1;
                     Thread.sleep(1000);
                     if (!recording) break;//防止在线程休眠时recording改变

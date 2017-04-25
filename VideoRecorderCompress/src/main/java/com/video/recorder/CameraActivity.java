@@ -27,6 +27,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.video.utils.CheckPermissionsUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,16 +38,12 @@ import java.util.List;
 import static android.view.View.VISIBLE;
 
 /**
- * Created by yangchaojiang on 1/16/2017.
- * E-Mail:1007181167@qq.com
- * Description：由于Camera2这个类要求minSDK大于21,所以依旧使用Camera这个类进行实现
+ /**
+ * Created by yangc on 2017/4/24.
+ * E-Mail:yangchaojiang@outlook.com
+ * Deprecated: 由于Camera2这个类要求minSDK大于21, 所以依旧使用Camera这个类进行实现
  */
-public class CameraActivity extends Activity implements View.OnClickListener, ZoomProgressButton.ProgressListener {
-
-    public  static final  String OUT_PATH="outPath";//输出路径
-    public  static final  String OUT_TIME="outTime";//输出时长
-    public  static final  String OUT_SIZE="outSize";//输出时长
-    public  static  final  int  RESULT_CODE=200;//结果码
+public class CameraActivity extends Activity implements View.OnClickListener, ShapeProgressButton.ProgressListener {
     private static final String TAG = CameraActivity.class.getSimpleName();
     private static final int FOCUS_AREA_SIZE = 500;
     private Camera mCamera;
@@ -55,7 +54,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Zo
     private static boolean flash = false;
     private int quality = CamcorderProfile.QUALITY_720P;
     private ImageView button_changeCamera, buttonFlash, img_repleal, img_selected, img_back;
-    private ZoomProgressButton mZoomProgressBtn;
+    private ShapeProgressButton mZoomProgressBtn;
     private RelativeLayout re_video_control_panel;
     private FrameLayout camera_preview;
     private RelativeLayout re_video_record_panel;
@@ -76,6 +75,10 @@ public class CameraActivity extends Activity implements View.OnClickListener, Zo
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_camera);
+        //////////////////////////////////////////////////////////////////
+        //Andriod6.0 running permission
+        CheckPermissionsUtil checkPermissionsUtil = new CheckPermissionsUtil(this);
+        checkPermissionsUtil.requestAllPermission(this);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         button_changeCamera = (ImageView) findViewById(R.id.button_ChangeCamera);
         buttonFlash = (ImageView) findViewById(R.id.buttonFlash);
@@ -170,7 +173,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Zo
     public void initialize() {
         mPreview = new CameraPreview(CameraActivity.this, mCamera);
         camera_preview.addView(mPreview);
-        mZoomProgressBtn = (ZoomProgressButton) findViewById(R.id.button_capture);
+        mZoomProgressBtn = (ShapeProgressButton) findViewById(R.id.button_capture);
         mZoomProgressBtn.setOnTouchListener(mOnVideoControllerTouchListener);
         button_changeCamera.setOnClickListener(switchCameraListener);
         buttonFlash.setOnClickListener(flashListener);
@@ -432,7 +435,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Zo
     };
 
     private void releaseMediaRecorder() {
-        Log.i(TAG, "releaseMediaRecorder :" + mediaRecorder + "    mCamera : " + mCamera);
+        Log.i("Sunmeng", "releaseMediaRecorder :" + mediaRecorder + "    mCamera : " + mCamera);
         if (mediaRecorder != null) {
             mediaRecorder.reset();
             mediaRecorder.release();
@@ -601,10 +604,10 @@ public class CameraActivity extends Activity implements View.OnClickListener, Zo
             Bundle bundle = getIntent().getExtras();
             if (bundle == null)
                 bundle = new Bundle();
-            bundle.putString(OUT_PATH, url_file);
-            bundle.putLong(OUT_TIME, mZoomProgressBtn.videoTime);
-            bundle.putLong(OUT_SIZE, new File(url_file).length());
-            Log.i(TAG, "output : " + url_file + " time : " + mZoomProgressBtn.videoTime + "   size : " + new File(url_file).length());
+            bundle.putString("output", url_file);
+            bundle.putLong("time", mZoomProgressBtn.videoTime);
+            bundle.putLong("size", new File(url_file).length());
+            Log.i("Sunmeng", "output : " + url_file + " time : " + mZoomProgressBtn.videoTime + "   size : " + new File(url_file).length());
             Intent intent = new Intent();
             intent.putExtras(bundle);
             setResult(200, intent);

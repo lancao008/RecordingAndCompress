@@ -5,6 +5,11 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
 
+/**
+ * Created by yangc on 2017/4/24.
+ * E-Mail:yangchaojiang@outlook.com
+ * Deprecated:
+ **/
 
 class Screens {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--进度按钮-->
-    <declare-styleable name="ZoomProgressButton">
+    <declare-styleable name="ShapeProgressButton">
         <attr name="zpb_radius" format="dimension" /><!--圆的半径-->
         <attr name="stripeWidth" format="dimension" /><!--进度条宽度-->
         <attr name="progressColor" format="color" /><!--进度颜色-->

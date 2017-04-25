@@ -1,14 +1,15 @@
 package com.video.recorder;
 
 import android.content.Context;
+import android.os.Environment;
 
 import java.io.File;
 import java.util.UUID;
 
 /**
- * Created by yangchaojiang on 1/16/2017.
- * E-Mail:1007181167@qq.com
- * Description:
+ * Created by yangc on 2017/4/24.
+ * E-Mail:yangchaojiang@outlook.com
+ * Deprecated: 文件帮助类
  */
 
 public class FileUtils {
@@ -37,5 +38,13 @@ public class FileUtils {
      ***/
     public static String getFileKey() {
         return UUID.randomUUID().toString().replace("-", "");
+    }
+
+    public static boolean isExternalStorageWritable(){
+        String state= Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)){
+            return true;
+        }
+        return false;
     }
 }
