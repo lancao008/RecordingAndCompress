@@ -1,4 +1,4 @@
-# Android Video Compressor  And recording
+# 仿微信视频录制和压缩 进度回调
 
 Video Compressor based in the [**Telegram for Android**](https://github.com/DrKLO/Telegram) [![Telegram for Android](https://raw.githubusercontent.com/lalongooo/VideoCompressor/master/images/ic_launcher.png)](https://github.com/DrKLO/Telegram) app source code.
 
@@ -7,13 +7,14 @@ use     import dependency in gradle
 
 ```
 dependencies {
- compile 'ycjiang:VideoRecorderCompress:1.0.1'
+compile 'com.ycjiang:VideoRecorderCompress:1.0.3'
 }
  Maven
+ 
 <dependency>
-  <groupId>ycjiang</groupId>
+  <groupId>com.ycjiang</groupId>
   <artifactId>VideoRecorderCompress</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
   <type>pom</type>
 </dependency>
 ```
