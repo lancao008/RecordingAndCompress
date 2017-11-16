@@ -16,11 +16,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.video.compres.VideoCompressor;
+import com.video.compress.VideoCompressor;
 import com.video.recorder.CameraActivity;
-
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, RESULT_CODE_COMPRESS_VIDEO);
             }
         });
+        editText.setText(Environment.getExternalStorageDirectory()+"/test3.mp4");
 
     }
 
@@ -77,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        }else if (reqCode == 3 && resCode == CameraActivity.RESULT_CODE && data != null){
-            String  path=data.getStringExtra(CameraActivity.OUT_PATH);
+        }else if (reqCode == 10 && resCode == RESULT_OK&& data != null){
+            String  path=data.getExtras().getString(CameraActivity.OUT_FIle_KEY);
             textView.setText(path);
         }
     }
@@ -119,6 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void record(View v) {
-        CameraActivity.startRecordActivity(this);
+        CameraActivity.startRecordActivity(this,10);
     }
 }

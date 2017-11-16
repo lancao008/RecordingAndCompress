@@ -3,7 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RecordingAndCompress.iml" filepath="$PROJECT_DIR$/RecordingAndCompress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecordingAndCompress.iml" filepath="$PROJECT_DIR$/RecordingAndCompress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VideoCompress/VideoCompress.iml" filepath="$PROJECT_DIR$/VideoCompress/VideoCompress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VideoRecorder/VideoRecorder.iml" filepath="$PROJECT_DIR$/VideoRecorder/VideoRecorder.iml" />
       <module fileurl="file://$PROJECT_DIR$/VideoRecorderCompress/VideoRecorderCompress.iml" filepath="$PROJECT_DIR$/VideoRecorderCompress/VideoRecorderCompress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

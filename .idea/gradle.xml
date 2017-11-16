@@ -8,7 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/VideoRecorderCompress" />
+            <option value="$PROJECT_DIR$/VideoCompress" />
+            <option value="$PROJECT_DIR$/VideoRecorder" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

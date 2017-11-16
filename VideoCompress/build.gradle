@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets.main {
+        jniLibs.srcDir 'libs'
+        jni.srcDirs = [] //disable automatic ndk-build call
+        // jni.srcDir 'src/main/jni'
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile 'org.aspectj:aspectjrt:1.8.5'
+    compile files('libs/isoparser-1.0.6.jar')
+}
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'ycjiang'      //bintray注册的用户名
+    groupId = 'com.ycjiang'         //compile引用时的第1部分groupId
+    artifactId = 'VideoCompress'     //compile引用时的第2部分项目名
+    publishVersion ='1.0.4'    //compile引用时的第3部分版本号
+    desc = 'Video recording and compression processing.'//d项目描述
+    repoName="yangjiang" //你的仓库名称，没有填写默认仓库是maven//这也是很多人上传仓库不对问题最多情况，
+    website = 'https://github.com/yangchaojiang/RecordingAndCompress' //github 托管地址
+}
