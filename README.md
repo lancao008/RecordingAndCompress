@@ -7,16 +7,13 @@ use     import dependency in gradle
 
 ```
 dependencies {
-compile 'com.ycjiang:VideoRecorderCompress:1.0.3'
+compile 'com.ycjiang:VideoCompress:1.0.4'
+
+compile 'com.ycjiang:VideoRecorder:1.0.4'
+
 }
- Maven
  
-<dependency>
-  <groupId>com.ycjiang</groupId>
-  <artifactId>VideoRecorderCompress</artifactId>
-  <version>1.0.3</version>
-  <type>pom</type>
-</dependency>
+ 
 ```
  
   Add video recording and compression progress callback
